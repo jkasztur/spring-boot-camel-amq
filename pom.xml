@@ -16,7 +16,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!-- configure the Fuse version you want to use here -->
-    <fuse.version>7.0.1.fuse-000008-redhat-4</fuse.version>
+    <fuse.version>7.1.0.fuse-710018-redhat-00001</fuse.version>
 
     <!-- maven plugin versions -->
     <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
@@ -64,13 +64,25 @@
 
     <!-- Camel -->
     <dependency>
+      <groupId>org.fusesource</groupId>
+      <artifactId>activemq-client</artifactId>
+      <version>${fuse.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.fusesource</groupId>
+      <artifactId>camel-activemq</artifactId>
+      <version>${fuse.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-spring-boot-starter</artifactId>
     </dependency>
 
     <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-amqp-starter</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-activemq</artifactId>
     </dependency>
 
     <dependency>
@@ -141,20 +153,6 @@
           <execution>
             <goals>
               <goal>repackage</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.jboss.redhat-fuse</groupId>
-        <artifactId>fabric8-maven-plugin</artifactId>
-        <version>${fuse.version}</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>resource</goal>
-              <goal>build</goal>
             </goals>
           </execution>
         </executions>
